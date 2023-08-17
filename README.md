@@ -25,12 +25,12 @@ copier update --trust
 This template uses itself, so it's a bit messy. Here is a quick recap:
 
 * The nested directory `template/template` contains common template files for
-all final projects, no matter the language. Hence, it is relatively empty.
+  all final projects, no matter the language. Hence, it is relatively empty.
 * The toplevel directory `template` contains common template files for Copier
-template projects. It is built upon the templates in the `template/template`
-directory.
+  template projects. It is built upon the templates in the `template/template`
+  directory.
 * Finally, the root directory `.` (i.e. this project itself) is built upon the
-templates in the `template` directory.
+  templates in the `template` directory.
 
 As a consequence, all Jinja-like filenames in the `template/template` directory
 should be quoted with `{{ '{{' }} ... {{ '}}' }}` to avoid being rendered one
