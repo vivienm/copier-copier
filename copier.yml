@@ -51,7 +51,7 @@ repository_name:
   when: "{{ repository_hosted }}"
   help: "Name of the repository"
   type: "str"
-  default: "{{ project_name | lower | replace('_', '-') | replace(' ', '-') }}"
+  default: "copier-{{ project_name | lower | replace('_', '-') | replace(' ', '-') }}"
   validator: "{% if repository_hosted and not repository_name %}You must provide a repository name.{% endif %}"
 
 repository_url:
