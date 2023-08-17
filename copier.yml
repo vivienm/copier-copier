@@ -14,19 +14,30 @@ project_name:
   help: "Project name"
   type: "str"
   placeholder: "Lorem Ipsum"
-  validator: "{% if not project_name %}You must provide a project name.{% endif %}"
+  validator: >
+    {% if not project_name %}
+    You must provide a project name.
+    {% endif %}
 
 project_description:
   help: "Project description"
   type: "str"
   placeholder: "Lorem ipsum dolor sit amet."
-  validator: "{% if not project_description %}You must provide a project description.{% endif %}"
+  validator: >
+    {% if not project_description %}
+    You must provide a project description.
+    {% elif project_description[-1] not in ".!?…" %}
+    The project description must end with a punctuation mark.
+    {% endif %}
 
 author_fullname:
   help: "Your full name"
   type: "str"
   placeholder: "John Doe"
-  validator: "{% if not author_fullname %}You must provide your full name.{% endif %}"
+  validator: >
+    {% if not author_fullname %}
+    You must provide your full name.
+    {% endif %}
 
 repository_hosted:
   help: "Host the repository online"
@@ -39,27 +50,42 @@ repository_provider:
   type: "str"
   choices:
   - "github.com"
-  default: "{% if repository_hosted %}github.com{% endif %}"
+  default: >
+    {% if repository_hosted %}
+    github.com
+    {% endif %}
 
 repository_namespace:
   when: "{{ repository_hosted }}"
   help: "Namespace of the repository"
   type: "str"
-  validator: "{% if repository_hosted and not repository_namespace %}You must provide a repository namespace.{% endif %}"
+  validator: >
+    {% if repository_hosted and not repository_namespace %}
+    You must provide a repository namespace.
+    {% endif %}
 
 repository_name:
   when: "{{ repository_hosted }}"
   help: "Name of the repository"
   type: "str"
   default: "copier-{{ project_name | lower | replace('_', '-') | replace(' ', '-') }}"
-  validator: "{% if repository_hosted and not repository_name %}You must provide a repository name.{% endif %}"
+  validator: >
+    {% if repository_hosted and not repository_name %}
+    You must provide a repository name.
+    {% endif %}
 
 repository_url:
   when: "{{ repository_hosted }}"
   help: "URL of the repository"
   type: "str"
-  default: "{% if repository_hosted %}https://{{ repository_provider }}/{{ repository_namespace }}/{{ repository_name }}{% endif %}"
-  validator: "{% if repository_hosted and not repository_url %}You must provide a repository URL.{% endif %}"
+  default: >
+    {% if repository_hosted %}
+    https://{{ repository_provider }}/{{ repository_namespace }}/{{ repository_name }}
+    {% endif %}
+  validator: >
+    {% if repository_hosted and not repository_url %}
+    You must provide a repository URL.
+    {% endif %}
 
 copyright_license:
   help: "Project license"
@@ -73,10 +99,16 @@ copyright_holder:
   help: "Name of the person/entity holding the copyright"
   type: "str"
   default: "{{ author_fullname }}"
-  validator: "{% if not copyright_holder %}You must provide a copyright holder.{% endif %}"
+  validator: >
+    {% if not copyright_holder %}
+    You must provide a copyright holder.
+    {% endif %}
 
 copyright_year:
   help: "Copyright date"
   type: "int"
   default: 2023
-  validator: "{% if not 2020 <= copyright_year <= 2100 %}You must provide a valid year between 2020 and 2100.{% endif %}"
+  validator: >
+    {% if not 2020 <= copyright_year <= 2100 %}
+    You must provide a valid year between 2020 and 2100.
+    {% endif %}
