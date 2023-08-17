@@ -105,7 +105,7 @@ copyright_holder:
     {%- endif -%}
 
 copyright_year:
-  help: "Copyright date"
+  help: "Copyright year"
   type: "int"
   default: 2023
   validator: >
