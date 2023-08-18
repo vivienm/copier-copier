@@ -50,10 +50,7 @@ repository_provider:
   type: "str"
   choices:
   - "github.com"
-  default: >
-    {%- if repository_hosted -%}
-    github.com
-    {%- endif -%}
+  default: "github.com"
 
 repository_namespace:
   when: "{{ repository_hosted }}"
