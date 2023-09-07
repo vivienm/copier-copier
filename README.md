@@ -17,7 +17,7 @@ and fill in the form.
 To update an existing project based on this template, run:
 
 ```shell
-copier update --trust
+copier update --skip-answered --trust
 ```
 
 ## Project layout
