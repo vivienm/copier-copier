@@ -4,7 +4,7 @@ A Copier template for Copier templates!
 
 ## Quickstart
 
-To install Copier, please follow the installation instructions [here](https://copier.readthedocs.io/en/stable/#installation).
+To install Copier, please follow the instructions [here](https://copier.readthedocs.io/en/stable/#installation).
 
 Then, to create a new project based on this template, run:
 
