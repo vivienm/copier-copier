@@ -5,8 +5,8 @@ _envops:
 
 _subdirectory: "template"
 
-_tasks:
-- ["{{ _copier_python }}", "_copier_tasks.py"]
+# _tasks:
+# - ["{{ _copier_python }}", "_copier_tasks.py"]
 
 # Prompt.
 
