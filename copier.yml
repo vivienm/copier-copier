@@ -1,14 +1,7 @@
-# Configuration.
-
 _envops:
   trim_blocks: true
 
 _subdirectory: "template"
-
-# _tasks:
-# - ["{{ _copier_python }}", "_copier_tasks.py"]
-
-# Prompt.
 
 project_name:
   help: "Project name"
@@ -18,6 +11,10 @@ project_name:
     {%- if not project_name -%}
     You must provide a project name.
     {%- endif -%}
+
+project_slug:
+  when: false
+  default: "{{ project_name | lower | replace(' ', '-') | replace('_', '-') }}"
 
 project_description:
   help: "Project description"
@@ -30,61 +27,16 @@ project_description:
     The project description must end with a punctuation mark.
     {%- endif -%}
 
-author_fullname:
+author_name:
   help: "Your full name"
   type: "str"
   placeholder: "John Doe"
   validator: >
-    {%- if not author_fullname -%}
+    {%- if not author_name -%}
     You must provide your full name.
     {%- endif -%}
 
-repository_hosted:
-  help: "Host the repository online"
-  type: "bool"
-  default: true
-
-repository_provider:
-  when: "{{ repository_hosted }}"
-  help: "Code hosting platform"
-  type: "str"
-  choices:
-  - "github.com"
-  default: "github.com"
-
-repository_namespace:
-  when: "{{ repository_hosted }}"
-  help: "Namespace of the repository"
-  type: "str"
-  validator: >
-    {%- if repository_hosted and not repository_namespace -%}
-    You must provide a repository namespace.
-    {%- endif -%}
-
-repository_name:
-  when: "{{ repository_hosted }}"
-  help: "Name of the repository"
-  type: "str"
-  default: "copier-{{ project_name | lower | replace('_', '-') | replace(' ', '-') }}"
-  validator: >
-    {%- if repository_hosted and not repository_name -%}
-    You must provide a repository name.
-    {%- endif -%}
-
-repository_url:
-  when: "{{ repository_hosted }}"
-  help: "URL of the repository"
-  type: "str"
-  default: >
-    {%- if repository_hosted -%}
-    https://{{ repository_provider }}/{{ repository_namespace }}/{{ repository_name }}
-    {%- endif -%}
-  validator: >
-    {%- if repository_hosted and not repository_url -%}
-    You must provide a repository URL.
-    {%- endif -%}
-
-copyright_license:
+license:
   help: "Project license"
   type: "str"
   choices:
@@ -93,9 +45,9 @@ copyright_license:
   default: "Proprietary"
 
 copyright_holder:
-  help: "Name of the person/entity holding the copyright"
+  help: "Name of the person or entity holding the copyright"
   type: "str"
-  default: "{{ author_fullname }}"
+  default: "{{ author_name }}"
   validator: >
     {%- if not copyright_holder -%}
     You must provide a copyright holder.
@@ -108,4 +60,38 @@ copyright_year:
   validator: >
     {%- if not 2020 <= copyright_year <= 2100 -%}
     You must provide a valid year between 2020 and 2100.
+    {%- endif -%}
+
+hosting_platform:
+  help: "Code hosting platform for the project"
+  type: "str"
+  choices:
+  - "none"
+  - "github"
+
+github_account:
+  when: "{{ hosting_platform == 'github' }}"
+  help: "GitHub account (username or organization)"
+  type: "str"
+  placeholder: "jdoe"
+  validator: >
+    {%- if not github_account -%}
+    You must provide a GitHub account.
+    {%- endif -%}
+
+repo_name:
+  when: "{{ hosting_platform != 'none' }}"
+  help: "Name of the{% if hosting_platform == 'github' %} GitHub{% endif %} repository"
+  type: "str"
+  default: "copier-{{ project_slug }}"
+  validator: >
+    {%- if not repo_name -%}
+    You must provide a repository name.
+    {%- endif -%}
+
+repo_url:
+  when: false
+  default: >
+    {%- if hosting_platform == 'github' -%}
+    https://github.com/{{ github_account }}/{{ repo_name }}
     {%- endif -%}

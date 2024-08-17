@@ -9,7 +9,7 @@ To install Copier, please follow the instructions [here](https://copier.readthed
 Then, to create a new project based on this template, run:
 
 ```shell
-copier copy --trust 'https://github.com/vivienm/copier-copier' path/to/your/project
+copier copy 'https://github.com/vivienm/copier-copier' path/to/your/project
 ```
 
 and fill in the form.
@@ -17,7 +17,7 @@ and fill in the form.
 To update an existing project based on this template, run:
 
 ```shell
-copier update --skip-answered --trust
+copier update --skip-answered
 ```
 
 ## Project layout
@@ -47,14 +47,14 @@ git push
 
 # Then, propagate the change to the toplevel copier template directory.
 # Inspect the changes and commit them.
-copier update --skip-answered --trust
+copier update --skip-answered
 git diff
 git commit -am "chore: propagate $(git rev-parse --short HEAD) to copier template"
 git push
 
 # Finally, propagate the change to the project itself. Inspect the changes
 # and commit them.
-copier update --skip-answered --trust
+copier update --skip-answered
 git diff
 git commit -am "chore: propagate $(git rev-parse --short HEAD) to project"
 git push
