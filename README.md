@@ -49,13 +49,13 @@ git push
 # Inspect the changes and commit them.
 copier update --skip-answered --trust
 git diff
-git commit -am "chore: propage $(git rev-parse --short HEAD) to copier template"
+git commit -am "chore: propagate $(git rev-parse --short HEAD) to copier template"
 git push
 
 # Finally, propagate the change to the project itself. Inspect the changes
 # and commit them.
 copier update --skip-answered --trust
 git diff
-git commit -am "chore: propage $(git rev-parse --short HEAD) to project"
+git commit -am "chore: propagate $(git rev-parse --short HEAD) to project"
 git push
 ```
