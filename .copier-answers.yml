@@ -3,11 +3,16 @@
 _commit: 6fda02f
 _src_path: git@github.com:vivienm/copier-copier.git
 author_fullname: Vivien Maisonneuve
+author_name: Vivien Maisonneuve
 copyright_holder: Vivien Maisonneuve
 copyright_license: MIT
 copyright_year: 2023
+github_account: vivienm
+hosting_platform: github
+license: MIT
 project_description: A Copier template for Copier templates!
 project_name: Copier project template
+repo_name: copier-copier
 repository_hosted: true
 repository_name: copier-copier
 repository_namespace: vivienm
