@@ -56,7 +56,7 @@ copyright_holder:
 copyright_year:
   help: "Copyright year"
   type: "int"
-  default: 2024
+  default: 2025
   validator: >
     {%- if not 2020 <= copyright_year <= 2100 -%}
     You must provide a valid year between 2020 and 2100.
