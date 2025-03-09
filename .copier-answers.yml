@@ -1,13 +1,13 @@
 # Changes here will be overwritten by Copier. NEVER EDIT MANUALLY.
 
-_commit: d865229
+_commit: 8e9fcaa
 _src_path: git@github.com:vivienm/copier-copier.git
-author_name: Vivien Maisonneuve
 copyright_holder: Vivien Maisonneuve
 copyright_year: 2023
-github_account: vivienm
-hosting_platform: github
+forge: github
+github_repo: copier-copier
+github_user: vivienm
 license: MIT
 project_description: A Copier template for Copier templates!
 project_name: Copier project template
-repo_name: copier-copier
+user_name: Vivien Maisonneuve
