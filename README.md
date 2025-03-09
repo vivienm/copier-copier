@@ -1,6 +1,6 @@
 # Copier project template
 
-A Copier template for Copier templates!
+A [Copier](https://copier.readthedocs.io/en/stable/) template for Copier templates!
 
 ## Quickstart
 
