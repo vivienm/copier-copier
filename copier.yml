@@ -27,12 +27,12 @@ project_description:
     The project description must end with a punctuation mark.
     {%- endif -%}
 
-author_name:
+user_name:
   help: "Your full name"
   type: "str"
   placeholder: "John Doe"
   validator: >
-    {%- if not author_name -%}
+    {%- if not user_name -%}
     You must provide your full name.
     {%- endif -%}
 
@@ -47,7 +47,7 @@ license:
 copyright_holder:
   help: "Name of the person or entity holding the copyright"
   type: "str"
-  default: "{{ author_name }}"
+  default: "{{ user_name }}"
   validator: >
     {%- if not copyright_holder -%}
     You must provide a copyright holder.
@@ -62,36 +62,36 @@ copyright_year:
     You must provide a valid year between 2020 and 2100.
     {%- endif -%}
 
-hosting_platform:
+forge:
   help: "Code hosting platform for the project"
   type: "str"
   choices:
   - "none"
   - "github"
 
-github_account:
-  when: "{{ hosting_platform == 'github' }}"
+github_user:
+  when: "{{ forge == 'github' }}"
   help: "GitHub account (username or organization)"
   type: "str"
   placeholder: "jdoe"
   validator: >
-    {%- if not github_account -%}
+    {%- if not github_user -%}
     You must provide a GitHub account.
     {%- endif -%}
 
-repo_name:
-  when: "{{ hosting_platform != 'none' }}"
-  help: "Name of the{% if hosting_platform == 'github' %} GitHub{% endif %} repository"
+github_repo:
+  when: "{{ forge == 'github' }}"
+  help: "Name of the GitHub repository"
   type: "str"
   default: "copier-{{ project_slug }}"
   validator: >
-    {%- if not repo_name -%}
+    {%- if not github_repo -%}
     You must provide a repository name.
     {%- endif -%}
 
 repo_url:
   when: false
   default: >
-    {%- if hosting_platform == 'github' -%}
-    https://github.com/{{ github_account }}/{{ repo_name }}
+    {%- if forge == 'github' -%}
+    https://github.com/{{ github_user }}/{{ github_repo }}
     {%- endif -%}
