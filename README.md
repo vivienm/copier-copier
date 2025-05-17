@@ -8,7 +8,7 @@ To install Copier, please follow the instructions [here](https://copier.readthed
 
 Then, to create a new project based on this template, run:
 
-```shell
+```bash
 copier copy 'https://github.com/vivienm/copier-copier' path/to/your/project
 ```
 
@@ -16,7 +16,7 @@ and fill in the form.
 
 To update an existing project based on this template, run:
 
-```shell
+```bash
 copier update --skip-answered
 ```
 
@@ -34,7 +34,7 @@ As a consequence, all Jinja-like filenames in the `template/template` directory 
 
 To update the project:
 
-```shell
+```bash
 # First, do some changes in the nested common template directory.
 vim template/template/some_file
 git diff
