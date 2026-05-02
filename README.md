@@ -22,26 +22,26 @@ copier update --skip-answered
 
 ## Project layout
 
-This template uses itself, so it's a bit messy. Here is a quick recap:
+This template uses itself, so it's a bit messy. Here is a quick overview:
 
-* The nested directory `template/template` contains common template files for all final projects, no matter the language.
-  Hence, it is relatively empty.
-* The toplevel directory `template` contains common template files for Copier template projects.
-  It is built upon the templates in the `template/template` directory.
-* Finally, the root directory `.` (i.e. this project itself) is built upon the templates in the `template` directory.
+* The nested directory `template/template` contains common template files for all final projects, regardless of the language.
+  As such, it is relatively empty.
+* The top-level directory `template` contains common template files for Copier template projects.
+  It is based on the templates in the `template/template` directory.
+* Finally, the root directory `.` (i.e., this project itself) is based on the templates in the `template` directory.
 
-As a consequence, all Jinja-like filenames in the `template/template` directory should be quoted with `{{ '{{' }} ... {{ '}}' }}` to avoid being rendered one step too far by Copier in the `template` directory.
+Consequently, all Jinja-like filenames in the `template/template` directory should be quoted with `{{ '{{' }} ... {{ '}}' }}` to prevent Copier from rendering them prematurely when processing the `template` directory.
 
 To update the project:
 
 ```bash
-# First, do some changes in the nested common template directory.
+# First, make some changes in the nested common template directory.
 vim template/template/some_file
 git diff
 git commit -am "chore: update some file"
 git push
 
-# Then, propagate the change to the toplevel copier template directory.
+# Then, propagate the change to the top-level copier template directory.
 # Inspect the changes and commit them.
 copier update --skip-answered
 git diff
