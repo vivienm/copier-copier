@@ -4,17 +4,15 @@ A [Copier](https://copier.readthedocs.io/en/stable/) template for Copier templat
 
 ## Quickstart
 
-To install Copier, please follow the instructions [here](https://copier.readthedocs.io/en/stable/#installation).
+First, [install Copier](https://copier.readthedocs.io/en/stable/#installation).
 
-Then, to create a new project based on this template, run:
+Then, to create a new project based on this template, run the following command and fill in the form:
 
 ```bash
 copier copy 'https://github.com/vivienm/copier-copier' path/to/your/project
 ```
 
-and fill in the form.
-
-To update an existing project based on this template, run:
+Later, to update your project as this template evolves, run:
 
 ```bash
 copier update --skip-answered
